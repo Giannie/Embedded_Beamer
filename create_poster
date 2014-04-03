@@ -1,0 +1,26 @@
+#!/bin/bash
+
+for file in $1/*.avi; do
+#for file in `find $1/videos/ -type f -`; do
+    
+    # check to see if a poster already exists
+    
+    if [ ! -e "${file/.avi}.jpg" ]; then
+        # make a poster
+        echo "Creating image for $file"
+        avconv -i "$file" -vframes 1 -an -f image2 -v panic -y "${file/.avi/}".jpg
+    fi
+done
+
+for file in $1/*.mp4; do
+#for file in `find $1/videos/ -type f -`; do
+    
+    # check to see if a poster already exists
+    
+    if [ ! -e "${file/.mp4}.jpg" ]; then
+        # make a poster
+        echo "Creating image for $file"
+        avconv -i "$file" -vframes 1 -an -f image2 -v panic -y "${file/.mp4/}".jpg
+    fi
+done
+

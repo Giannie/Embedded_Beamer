@@ -1,0 +1,201 @@
+% This file contains a list of useful commands
+% Written by Andy and Jenny Barry
+%
+% Especially useful with pdfpc and videos.  See:
+% http://abarry.org/the-new-complete-guide-to-embedded-videos-in-beamer-under-linux/
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Tr}{\textrm{Tr}}
+\newcommand{\RR}{\mathbb{R}}
+
+\definecolor{white}{rgb}{255, 255, 255}
+\definecolor{black}{rgb}{0, 0, 0}
+
+
+\newcommand{\putat}[3]{\begin{picture}(0,0)(0,0)\put(#1,#2){#3}\end{picture}}
+
+\newenvironment{changemargin}[2]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{0pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{#2}% 
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}} 
+
+
+\newcommand\CopyrightText[2][white]{%
+ \begin{textblock*}{\paperwidth}(0\paperwidth,.97\paperheight)%
+    \hfill\textcolor{#1}{\tiny#2}\hspace{20pt}
+  \end{textblock*}
+}
+
+%  \textcircled{c} 
+
+\newcommand{\citeFoot}[1]
+{
+    \rule{\linewidth}{0.5pt}
+    {\scriptsize #1}
+}
+
+\newcommand{\citeframe}[2][1]
+{\only<#1->{\footnote{\citeauthor{#2}, \citetitle{#2}. \citeyear{#2}.}}}
+
+\newcommand{\citeframeNoNumber}[2][1]
+{\only<#1->{\let\thefootnote\relax\footnote{\citeauthor{#2}, \citetitle{#2}. \citeyear{#2}.}}}
+
+\newcommand{\fullFrameImage}[3][black] % arguments: \fullFrameImage[color of text on page]{path to image}{content of frame}
+{
+    {
+        \usebackgroundtemplate{\includegraphics[height=\paperheight]{#2}}
+        \setbeamercolor{normal text}{bg=black,fg=#1}
+        \frame
+        {
+            #3
+        }
+    }
+}
+
+\newcommand{\fullFrameImageScaled}[2]
+{
+        \hspace{-1.37cm}
+        \frame
+        {
+            \vfill
+            \includegraphics[width=\paperwidth]{#1}
+            \vfill
+            #2
+        }
+}
+
+\newcommand{\fullFrameImageH}[1]
+{
+    {
+        \usebackgroundtemplate{\includegraphics[height=\paperheight]{#1}}
+        \frame[plain]{}
+    }
+}
+
+
+% this forces a particular dimension on the image designed for HD movies
+% generally, it is better to use fullFrameMovie with a correctly sized
+% poster-image since that will autosize
+% to use this, you'll need to include the textpos package
+\newcommand{\fullFrameMovieHd}[2]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \frame[plain]
+        {
+              %the width and height are right for a 16:9 aspect ratio and
+              %latex default page size of 5.04inx3.78in
+              \begin{textblock*}{\paperwidth}(0in,0.4725in)%
+                \href{run:#1?autostart&loop}{\includegraphics[width=\paperwidth,height=0.5625\paperwidth]{#2}}
+              \end{textblock*}
+        }
+    }
+}
+
+\newcommand{\fullFrameMovieAvi}[1]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \hspace{-1.37cm}
+        \frame[plain]
+        {
+            \href{run:#1.avi?autostart&loop&nobar}{\includegraphics[width=\paperwidth]{#1.jpg}}
+        }
+    }
+}
+
+\newcommand{\fullFrameMovie}[2]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \hspace{-1.37cm}
+        \frame[plain]
+        {
+            \href{run:#1?autostart&loop}{\includegraphics[width=\paperwidth]{#2}}
+        }
+    }
+}
+
+% autosizes with preference to height, not width
+\newcommand{\fullFrameMovieAviH}[1]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \frame[plain]
+        {
+              \href{run:#1.avi?autostart&loop}{\includegraphics[height=\paperheight]{#1.jpg}}
+        }
+    }
+}
+
+% autosizes with preference to height, not width
+\newcommand{\fullFrameMovieH}[2]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \hspace{-1.37cm}
+        \frame[plain]
+        {
+            \href{run:#1?autostart&loop}{\includegraphics[height=\paperheight]{#2}}
+        }
+    }
+}
+
+\newcommand{\fullFrameMovieAviHd}[1]
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \frame[plain]
+        {
+              %the width and height are right for a 16:9 aspect ratio and
+              %latex default page size of 5.04inx3.78in
+              \begin{textblock*}{\paperwidth}(0in,0.4725in)%
+                \href{run:#1.avi?autostart&loop}{\includegraphics[width=\paperwidth,height=0.5625\paperwidth]{#1.jpg}}
+              \end{textblock*}
+        }
+    }
+}
+
+\newcommand{\videoPoster}[1]
+{
+   \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        %\setbeamercolor{background canvas}{bg=black}
+
+        \frame[plain]
+        {
+
+              \begin{textblock*}{\paperwidth}(0in,0.4725in)%
+                \includegraphics[width=\paperwidth,height=0.5625\paperwidth]{#1}
+              \end{textblock*}
+  }
+}
+
+\newcommand{\blackframe}
+{
+    {
+        \setbeamertemplate{background canvas}[vertical shading][bottom=black,top=black]
+        \frame[plain]{}
+        \addtocounter{framenumber}{-1}
+    }
+}
+
+
