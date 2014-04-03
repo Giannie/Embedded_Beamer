@@ -17,7 +17,7 @@ git clone https://github.com/Giannie/Embedded_Beamer
 
 Run scripts with:
 
-'''
+```
 cd Embedded_Beamer
 ./embedded_beamer.sh
-'''
+```
