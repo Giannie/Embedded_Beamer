@@ -19,6 +19,7 @@ Run scripts with:
 
 <code>
 cd Embedded_Beamer
+
 ./emdedded_beamer.sh
 </code>
 
