@@ -11,14 +11,14 @@ else
 fi
 
 if [ "$dist_id" == "Ubuntu" ]; then
-    if [ "$release_version" -lt "13" ]; then
+    if [ "${release_version:0:2}" -lt "13" ]; then
         ./dep_old.sh
         ./build_vala.sh
     else
         ./dep.sh
     fi
 elif [ "$dist_id" == "LinuxMint" ]; then
-    if [ "$release_version" -lt 15 ]; then
+    if [ "${release_version:0:2}" -lt 15 ]; then
         ./dep_old.sh
         ./build_vala.sh
     else
