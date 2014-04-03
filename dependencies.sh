@@ -7,7 +7,7 @@ if [ "$dist_id" == "Ubuntu" -o "$dist_id" == "LinuxMint" ]; then
     supp=True
 else
     echo "Distribution not supported"
-    esac
+    break
 fi
 
 if [ "$dist_id" == "Ubuntu" ]; then
