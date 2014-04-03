@@ -18,7 +18,7 @@ if [ "$dist_id" == "Ubuntu" ]; then
         ./dep.sh
     fi
 elif [ "$dist_id" == "LinuxMint" ]; then
-    if [ "${release_version:0:2}" -lt 15 ]; then
+    if [ "${release_version}" -lt "15" ]; then
         ./dep_old.sh
         ./build_vala.sh
     else
